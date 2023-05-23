@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Contact;
 
 use Livewire\Component;
 use App\Models\Contact;
@@ -58,7 +58,7 @@ class ContactForm extends Component
             session()->flash('success', $this->flash_messages['success'][app()->getLocale()]); // Flash success message
 
         } catch (\Exception $e) {
-            session()->flash('error', $this->flash_messages['success'][app()->getLocale()]); // Flash error message
+            session()->flash('error', $this->flash_messages['error'][app()->getLocale()]); // Flash error message
         }
         finally{
             $this->reset(); // Reset the form
@@ -69,6 +69,6 @@ class ContactForm extends Component
 
     public function render()
     {
-        return view('livewire.contact-form');
+        return view('livewire.contact.contact-form');
     }
 }

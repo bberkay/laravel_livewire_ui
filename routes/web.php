@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\HomeController;
-use App\Http\Livewire\ContactForm;
+use App\Http\Livewire\Contact\ContactForm;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +22,12 @@ Route::get("/", function () {
     return view("home");
 })->name("welcome");
 
+// Home page
+Route::get('/home', function (){
+    return view('home');
+})->name('home');
+
+/****************** Contact Start ******************/
 // Contact page
 Route::get("/contact", function () {
     return view("contact");
@@ -29,6 +35,7 @@ Route::get("/contact", function () {
 
 // Contact form submit
 Route::get('/contact-submit', ContactForm::class)->name('contact-submit');
+/****************** Contact End ******************/
 
 // Set the language
 Route::get("/setlanguage/{locale?}", [LocalizationController::class, 'setLanguage'])->name("setlanguage");
@@ -36,7 +43,14 @@ Route::get("/setlanguage/{locale?}", [LocalizationController::class, 'setLanguag
 // Authentication routes
 Auth::routes();
 
-// Home page
-Route::get('/home', function (){
-    return view('home');
-})->name('home');
+/****************** Profile Start ******************/
+Route::middleware('auth')->group(function () {
+    // Profile page
+    Route::get('/profile', function (){
+        return view('profile');
+    })->name('profile')->middleware('auth');
+
+    // Create post page
+    Route::get('/create-post', ContactForm::class)->name('create-post')->middleware('auth');
+});
+/****************** Profile End ******************/

@@ -1,0 +1,23 @@
+.page-link{
+    color: var(--bs-dark);
+}
+
+[aria-label="« Previous"] .page-link{
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+}
+
+[aria-label="Next »"] .page-link{
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+}
+
+.page-link[aria-label="« Previous"] {
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+}
+
+.page-link[aria-label="Next »"] {
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+}

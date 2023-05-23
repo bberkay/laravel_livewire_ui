@@ -19,6 +19,7 @@ return [
     'movie' => 'Movie',
     'image' => 'Image',
     'preview' => 'Preview',
+    'search_post' => 'Search Post',
 ];
 
 ?>

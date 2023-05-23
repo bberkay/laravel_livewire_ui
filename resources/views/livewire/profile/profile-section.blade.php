@@ -9,7 +9,7 @@
     </div>
     <div class="mt-5">
         @if ($showPosts)
-            <x-profile.show-posts />
+            <livewire:profile.show-posts />
         @elseif ($showCreatePost)
             <livewire:profile.create-post />
         @elseif ($showProfile)

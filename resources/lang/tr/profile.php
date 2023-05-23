@@ -19,6 +19,7 @@ return [
     'movie' => 'Film',
     'image' => 'Resim',
     'preview' => 'Önizleme',
+    'search_post' => 'Gönderi Ara',
 ];
 
 ?>

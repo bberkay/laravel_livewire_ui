@@ -15,7 +15,7 @@ class ProfileSection extends Component
         // show posts and hide other sections
         $this->showCreatePost = false;
         $this->showProfile = false;
-        $this->showPosts = !$this->showPosts;
+        $this->showPosts = true;
     }
 
     public function toggleCreatePost()
@@ -23,7 +23,7 @@ class ProfileSection extends Component
         // show create post and hide other sections
         $this->showPosts = false;
         $this->showProfile = false;
-        $this->showCreatePost = !$this->showCreatePost;
+        $this->showCreatePost = true;
     }
 
     public function toggleProfile()
@@ -31,7 +31,7 @@ class ProfileSection extends Component
         // show profile and hide other sections
         $this->showPosts = false;
         $this->showCreatePost = false;
-        $this->showProfile = !$this->showProfile;
+        $this->showProfile = true;
     }
     
     

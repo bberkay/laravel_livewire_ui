@@ -26,17 +26,6 @@ class CreatePost extends Component
         'photo' => 'image|max:1024', // 1MB Max
     ];
 
-    protected $flash_messages = [
-        'success' => [
-            "tr" => "Post başarıyla oluşturuldu.",
-            "en" => "Post has been created successfully.",
-        ],
-        'error' => [
-            "tr" => "Post oluşturulurken hata oluştu.",
-            "en" => "Post has not been created successfully.",
-        ],
-    ];
-
     public function updated($field)
     {
         // Update the validation whenever a field is updated
@@ -59,11 +48,11 @@ class CreatePost extends Component
                 'post_type' => $this->post_type,
                 'image' => $this->photo->hashName(),
             ]); // Save the contact form
-                
-            session()->flash('success', $this->flash_messages['success'][app()->getLocale()]); // Flash success message
+            
+            session()->flash('success', __('profile.success_post_message')); // Flash success message
 
         } catch (\Exception $e) {
-            session()->flash('error', $this->flash_messages['error'][app()->getLocale()]); // Flash error message
+            session()->flash('error', __('profile.error_post_message')); // Flash error message
         }
         finally{
             $this->reset(); // Reset the form

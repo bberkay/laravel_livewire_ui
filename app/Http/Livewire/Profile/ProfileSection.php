@@ -8,7 +8,7 @@ class ProfileSection extends Component
 {
     public bool $showPosts = false;
     public bool $showCreatePost = false;
-    public bool $showProfile = false;
+    public bool $showProfile = true;
 
     public function togglePosts()
     {

@@ -7,6 +7,8 @@ return [
     'send' => 'Mesaj Gönder',
     'subject' => 'Konu',
     'message' => 'Mesaj',
+    'success_message' => 'Mesaj başarıyla gönderildi.',
+    'error_message' => 'Mesaj gönderilirken hata oluştu.',
 ];
 
 ?>

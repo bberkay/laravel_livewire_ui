@@ -20,6 +20,13 @@ return [
     'image' => 'Image',
     'preview' => 'Preview',
     'search_post' => 'Search Post',
+    'success_post_message' => 'Post has been created successfully.',
+    'error_post_message' => 'Post has not been created successfully.',
+    'success_profile_message' => 'Profile has been updated successfully.',
+    'error_profile_message' => 'Profile has not been updated successfully.',
+    'edit_button' => 'Edit Profile',
+    'save_button' => 'Save Profile',
+    'cancel_button' => 'Cancel Edit',
 ];
 
 ?>

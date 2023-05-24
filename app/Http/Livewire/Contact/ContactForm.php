@@ -20,17 +20,6 @@ class ContactForm extends Component
         'message' => 'required|min:3',
     ];
 
-    protected $flash_messages = [
-        'success' => [
-            "tr" => "İletişim talebiniz başarıyla gönderildi.",
-            "en" => "Your contact request has been submitted successfully.",
-        ],
-        'error' => [
-            "tr" => "İletişim talebiniz gönderilirken hata oluştu.",
-            "en" => "Your contact request has not been submitted successfully.",
-        ],
-    ];
-
     public function updated($field)
     {
         // Update the validation whenever a field is updated
@@ -55,10 +44,10 @@ class ContactForm extends Component
                 'message' => $this->message,
             ]); // Save the contact form
                 
-            session()->flash('success', $this->flash_messages['success'][app()->getLocale()]); // Flash success message
+            session()->flash('success', __('contact.success_message')); // Flash success message
 
         } catch (\Exception $e) {
-            session()->flash('error', $this->flash_messages['error'][app()->getLocale()]); // Flash error message
+            session()->flash('error', __('contact.error_message')); // Flash error message
         }
         finally{
             $this->reset(); // Reset the form

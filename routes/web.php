@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\App;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Livewire\Contact\ContactForm;
+use App\Http\Livewire\Profile\ProfileForm;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,9 +49,12 @@ Route::middleware('auth')->group(function () {
     // Profile page
     Route::get('/profile', function (){
         return view('profile');
-    })->name('profile')->middleware('auth');
+    })->name('profile');
 
     // Create post page
-    Route::get('/create-post', ContactForm::class)->name('create-post')->middleware('auth');
+    Route::get('/create-post', ContactForm::class)->name('create-post');
+
+    // Edit Profile 
+    Route::get('/edit-profile', ProfileForm::class)->name('edit-profile');
 });
 /****************** Profile End ******************/

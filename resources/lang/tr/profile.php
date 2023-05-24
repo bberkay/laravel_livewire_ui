@@ -20,6 +20,13 @@ return [
     'image' => 'Resim',
     'preview' => 'Önizleme',
     'search_post' => 'Gönderi Ara',
+    'success_post_message' => 'Gönderi başarıyla oluşturuldu.',
+    'error_post_message' => 'Gönderi oluşturulurken hata oluştu.',
+    'success_profile_message' => 'Profil başarıyla güncellendi.',
+    'error_profile_message' => 'Profil güncellenirken hata oluştu.',
+    'edit_button' => 'Profili Düzenle',
+    'save_button' => 'Profili Kaydet',
+    'cancel_button' => 'Düzenlemeyi İptal Et',
 ];
 
 ?>

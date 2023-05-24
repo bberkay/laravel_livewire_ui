@@ -12,16 +12,18 @@
 
                     <form method="POST" action="{{ route('password.confirm') }}">
                         @csrf
-
-                        <div class="col-12">
-                            <label for="password" class="col-form-label text-md-end">{{ __('auth.password') }}</label>
+                        <!-- Password -->
+                        <label for="password" class="col-form-label text-md-end">{{ __('auth.password') }}</label>
+                        <div class="input-group">
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
                         </div>
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                        <!-- Submit -->
                         <div class="col-12 mt-3">
                             <button type="submit" class="btn btn-dark form-control">
                                 {{ __('auth.confirm') }}

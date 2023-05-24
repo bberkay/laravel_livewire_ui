@@ -16,16 +16,6 @@ class ProfileForm extends Component
         'email' => 'required|email'
     ];
 
-    public function edit()
-    {
-        $this->editMode = true;
-    }
-
-    public function cancelEdit()
-    {
-        $this->editMode = false;
-    }
-
     public function updated($field)
     {
         // Update the validation whenever a field is updated
@@ -39,6 +29,13 @@ class ProfileForm extends Component
         $this->email = Auth::user()->email;
     }
 
+    public function changePasswordMode()
+    {
+        // redirect to profile page with change password section
+        session()->flash('toggleChangePassword', true);
+        return redirect()->route('profile');
+    }
+    
     public function submit()
     {
         try{

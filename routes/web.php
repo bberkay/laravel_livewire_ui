@@ -6,6 +6,7 @@ use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Livewire\Contact\ContactForm;
 use App\Http\Livewire\Profile\ProfileForm;
+use App\Http\Livewire\Profile\ChangePassword;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,14 +20,10 @@ use App\Http\Livewire\Profile\ProfileForm;
 */
 
 // Welcome page
-Route::get("/", function () {
-    return view("home");
-})->name("welcome");
+Route::get("/", [HomeController::class, 'index'])->name("welcome");
 
 // Home page
-Route::get('/home', function (){
-    return view('home');
-})->name('home');
+Route::get("/home", [HomeController::class, 'index'])->name("home");
 
 /****************** Contact Start ******************/
 // Contact page
@@ -56,5 +53,11 @@ Route::middleware('auth')->group(function () {
 
     // Edit Profile 
     Route::get('/edit-profile', ProfileForm::class)->name('edit-profile');
+ 
+    // Change Password - GET
+    Route::get('/profile/change-password', ChangePassword::class)->name('change-password');
+
+    // Change Password - POST
+    Route::post('/profile/change-password', ChangePassword::class)->name('change-password');
 });
 /****************** Profile End ******************/

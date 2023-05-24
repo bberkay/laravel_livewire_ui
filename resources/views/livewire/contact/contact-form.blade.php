@@ -65,5 +65,9 @@
         <button type="submit" class="btn btn-dark form-control">
             {{ __('contact.send') }}
         </button>
+    </div>  
+    <!-- Warning -->
+    <div class = "text-center mt-1">
+        <small>This form is example, please edit <a target="_blank" href="https://github.com/bberkay/laravel_livewire_ui/blob/main/.env.example">.env </a> file for run.</small>
     </div>
 </form>

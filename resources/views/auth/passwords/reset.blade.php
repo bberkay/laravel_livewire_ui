@@ -9,8 +9,9 @@
                 <div class="card-body pt-1">
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf
-
                         <input type="hidden" name="token" value="{{ $token }}">
+
+                        <!-- Email -->
                         <div class="col-12">
                             <label for="email" class="col col-form-label text-md-end">{{ __('auth.email') }}</label>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
@@ -20,20 +21,25 @@
                                 </span>
                             @enderror
                         </div>
-                        
-                        <div class="col-12">
-                            <label for="password" class="col-form-label text-md-end">{{ __('auth.password') }}</label>
+
+                        <!-- Password -->
+                        <label for="password" class="col-form-label text-md-end">{{ __('auth.password') }}</label>                        
+                        <div class="input-group">
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
                         </div>
-                        <div class="col-12">
-                            <label for="password-confirm" class="col-form-label text-md-end">{{ __('auth.confirm') }}</label>
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                        <!-- Confirm Password -->
+                        <label for="password-confirm" class="col-form-label text-md-end">{{ __('auth.confirm') }}</label>
+                        <div class="input-group">
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                         </div>
+
+                        <!-- Submit -->
                         <div class="col-12 mt-3">
                             <button type="submit" class="btn btn-dark form-control">
                                 {{ __('passwords.reset') }}

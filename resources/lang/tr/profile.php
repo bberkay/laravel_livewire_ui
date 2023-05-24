@@ -27,6 +27,12 @@ return [
     'edit_button' => 'Profili Düzenle',
     'save_button' => 'Profili Kaydet',
     'cancel_button' => 'Düzenlemeyi İptal Et',
+    'old_password' => 'Eski Şifre',
+    'new_password' => 'Yeni Şifre',
+    'confirm_password' => 'Şifreyi Onayla',
+    'success_password_message' => 'Şifre başarıyla değiştirildi.',
+    'error_password_message' => 'Şifre değiştirilirken hata oluştu.',
+    'error_old_password_message' => 'Eski şifre yanlış.',
 ];
 
 ?>

@@ -27,6 +27,12 @@ return [
     'edit_button' => 'Edit Profile',
     'save_button' => 'Save Profile',
     'cancel_button' => 'Cancel Edit',
+    'old_password' => 'Old Password',
+    'new_password' => 'New Password',
+    'confirm_password' => 'Confirm Password',
+    'success_password_message' => 'Password has been changed successfully.',
+    'error_password_message' => 'Password has not been changed successfully.',
+    'error_old_password_message' => 'Old password is incorrect.',
 ];
 
 ?>

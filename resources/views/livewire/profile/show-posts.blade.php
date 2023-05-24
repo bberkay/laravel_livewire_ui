@@ -15,6 +15,7 @@
         @endforeach
     </div>
     <hr>
+    <!-- Realtime Pagination -->
     <div class="row mt-3">
         <div class="d-flex justify-content-center">
            {{ $posts->links() }}

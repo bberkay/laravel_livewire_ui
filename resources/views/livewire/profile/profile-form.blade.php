@@ -39,27 +39,27 @@
                     <!-- Operation Buttons -->
                     @if (!$editMode)
                         <!-- Edit Button -->
-                        <button class = "btn btn-dark mt-3" type = "button" wire:click="edit">
+                        <button class = "btn btn-dark mt-3" type = "button" wire:click="$set('editMode', true)">
                             {{ __('profile.edit_button') }}
                         </button>
                         <hr>
                         <!-- Change Password -->
-                        <button class = "btn btn-primary" type = "button">
+                        <button class = "btn btn-primary" type = "button" wire:click="changePasswordMode">
                             {{ __('profile.change_password') }}
                         </button>
                     @else
                         <!-- Save Button, if there is no error -->
                         @if (!$errors->any())
-                            <button class = "btn btn-dark mt-3" type = "submit">
+                            <button class = "btn btn-primary mt-3" type = "submit">
                                 {{ __('profile.save_button') }}
                             </button>
                         @else
-                            <button class = "btn btn-dark mt-3" disabled>
+                            <button class = "btn btn-primary mt-3" disabled>
                                 {{ __('profile.save_button') }}
                             </button>
                         @endif
                         <!-- Cancel Button -->
-                        <button class = "btn btn-danger mt-3" type = "button" wire:click="cancelEdit">
+                        <button class = "btn btn-danger mt-3" type = "button" wire:click="$set('editMode', false)">
                             {{ __('profile.cancel_button') }}
                         </button>
                     @endif

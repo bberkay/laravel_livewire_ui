@@ -14,6 +14,8 @@
             <livewire:profile.create-post />
         @elseif ($showProfile)
             <livewire:profile.profile-form />
+        @elseif ($showChangePassword)
+            <livewire:profile.change-password />
         @endif
     </div>
 </div>

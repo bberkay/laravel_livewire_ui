@@ -7,6 +7,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Livewire\Contact\ContactForm;
 use App\Http\Livewire\Profile\ProfileForm;
 use App\Http\Livewire\Profile\ChangePassword;
+use App\Http\Livewire\Admin\AdminLogin;
+use App\Http\Livewire\Admin\AdminPanel;
+use App\Http\Controllers\Admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +22,19 @@ use App\Http\Livewire\Profile\ChangePassword;
 |
 */
 
+
 // Welcome page
 Route::get("/", [HomeController::class, 'index'])->name("welcome");
 
 // Home page
 Route::get("/home", [HomeController::class, 'index'])->name("home");
 
-/****************** Contact Start ******************/
+// Set the language
+Route::get("/setlanguage/{locale?}", [LocalizationController::class, 'setLanguage'])->name("setlanguage");
+
+
+/****************** Contact ******************/
+
 // Contact page
 Route::get("/contact", function () {
     return view("contact");
@@ -33,15 +42,21 @@ Route::get("/contact", function () {
 
 // Contact form submit
 Route::get('/contact-submit', ContactForm::class)->name('contact-submit');
-/****************** Contact End ******************/
 
-// Set the language
-Route::get("/setlanguage/{locale?}", [LocalizationController::class, 'setLanguage'])->name("setlanguage");
 
-// Authentication routes
+/****************** Admin ******************/
+// TODO: Add middleware to guard admin routes
+
+// Admin login page
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+
+
+
+/****************** Profile ******************/
+
+// Authentication routes for users
 Auth::routes();
 
-/****************** Profile Start ******************/
 Route::middleware('auth')->group(function () {
     // Profile page
     Route::get('/profile', function (){
@@ -60,4 +75,3 @@ Route::middleware('auth')->group(function () {
     // Change Password - POST
     Route::post('/profile/change-password', ChangePassword::class)->name('change-password');
 });
-/****************** Profile End ******************/

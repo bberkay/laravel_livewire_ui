@@ -1,4 +1,7 @@
 <?php return array (
+  'admin.admin-login' => 'App\\Http\\Livewire\\Admin\\AdminLogin',
+  'admin.admin-panel' => 'App\\Http\\Livewire\\Admin\\AdminPanel',
+  'admin.contact-messages' => 'App\\Http\\Livewire\\Admin\\ContactMessages',
   'contact.contact-form' => 'App\\Http\\Livewire\\Contact\\ContactForm',
   'home' => 'App\\Http\\Livewire\\Home',
   'profile.change-password' => 'App\\Http\\Livewire\\Profile\\ChangePassword',

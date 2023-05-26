@@ -51,7 +51,6 @@ Route::get('/contact-submit', ContactForm::class)->name('contact-submit');
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 
-
 /****************** Profile ******************/
 
 // Authentication routes for users

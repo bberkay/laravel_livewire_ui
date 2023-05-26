@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('email');
             $table->string('message');
             $table->boolean('answered')->default(false);
+            $table->string('answer')->nullable();
+            $table->timestamp('answered_at')->nullable();
+            $table->string("answerer")->nullable();
             $table->timestamps();
         });
     }

@@ -89,13 +89,15 @@
         <livewire:admin.modals.give-answer-modal />
         
         <script>
+            // Add event listener for show message modal and change its content
             window.addEventListener('showMessageModal', (e) => {
                 document.getElementById('modal-title').innerHTML = e.detail.title;                
                 document.getElementById('modal-content').innerHTML = e.detail.content;                
             });
 
+            // Add event listener for give answer modal and change its content
             window.addEventListener('giveAnswerModal', (e) => {
-                document.getElementById('contact-id').value = e.detail.contact_id;       
+                document.getElementById('contact-id').value = e.detail.contact_id;           
             });
         </script>
         <!-- Pagination -->

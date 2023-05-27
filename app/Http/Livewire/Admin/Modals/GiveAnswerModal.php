@@ -10,12 +10,16 @@ use App\Mail\AnswerAsEmail;
 class GiveAnswerModal extends Component
 {
     public $answer;
-    public $contact_id;
-    public $email;
+    public $contactId;
 
     protected $rules = [
         'answer' => 'required|min:15',
     ];
+
+    public function __construct(string $contactId)
+    {
+        $this->contactId = $contactId;
+    }
 
     public function updated($field)
     {
@@ -23,23 +27,40 @@ class GiveAnswerModal extends Component
         $this->validateOnly($field, $this->rules);
     }
 
+    public function updatedContactId()
+    {
+        // Değer güncellendiğinde yapılacak işlemler
+        
+        $this->render();
+    }
+
+
     public function submit(){
 
             $this->validate($this->rules); // Validate the form
 
             // Get the contact
-            $contact = Contact::where($this->contact_id);
+            $contact = Contact::where('id', $this->contact_id)->first();
+
+            // save the contact id and answer in log file
+            $log = fopen("log.txt", "a");
+            fwrite($log, "Contact ID: " . $this->contact_id . "\n");
+            fwrite($log, "Answer: " . $this->answer . "\n");
+            fclose($log);
 
             // Update the contact
             $contact->update([
                 'answer' => $this->answer,
                 'answered' => true,
                 'answered_at' => date('Y-m-d H:i:s'),
-                'answerer' => 'Admin'
+                'answerer' => 'Admin' 
             ]);
 
+            // Get the email of the contact
+            $email = $contact->email;
+
             // Send answer as email to the user
-            Mail::to($this->email)->send(new AnswerAsEmail($this->email, $this->answer));
+            Mail::to($email)->send(new AnswerAsEmail($email, $this->answer, $contact->subject));
 
             // redirect with success message
             return redirect()->route('admin')->with('success', __('admin.success_answer_message'));
@@ -55,7 +76,7 @@ class GiveAnswerModal extends Component
                 'answer' => $this->answer,
                 'answered' => true,
                 'answered_at' => date('Y-m-d H:i:s'),
-                'answerer' => 'Admin'
+                'answerer' => 'Admin' // TODO: Change this to the admin's name after admin login is implemented
             ]);
 
             // Send answer as email to the user

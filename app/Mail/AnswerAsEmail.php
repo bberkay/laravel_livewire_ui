@@ -8,7 +8,8 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use App\Models\Contact;
+use Illuminate\Support\Facades\Mail;
+use Symfony\Component\Mime\Address;
 
 class AnswerAsEmail extends Mailable
 {
@@ -17,7 +18,7 @@ class AnswerAsEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(protected Contact $contact)
+    public function __construct(public string $email, public string $answer, public string $subject_of_answer)
     {
         //
     }
@@ -30,7 +31,7 @@ class AnswerAsEmail extends Mailable
         return new Envelope(
             subject: 'Answer to your question',
             from: new Address('testforprojects42webio@gmail.com'),
-            to: [new Address($this->contact->email)],
+            to: [new Address($this->email)],
         );
     }
 
@@ -43,8 +44,8 @@ class AnswerAsEmail extends Mailable
         return new Content(
             view: 'emails.answer-as-email',
             with: [
-                'subject' => $this->contact->subject, 
-                'answer' => $this->contact->answer,
+                'subject' => $this->subject_of_answer,
+                'answer' => $this->answer,
             ],
         );
     }

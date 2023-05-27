@@ -1,6 +1,7 @@
 <?php return array (
   'admin.admin-login' => 'App\\Http\\Livewire\\Admin\\AdminLogin',
   'admin.admin-panel' => 'App\\Http\\Livewire\\Admin\\AdminPanel',
+  'admin.contact-table' => 'App\\Http\\Livewire\\Admin\\ContactTable',
   'admin.modals.give-answer-modal' => 'App\\Http\\Livewire\\Admin\\Modals\\GiveAnswerModal',
   'admin.modals.show-message-modal' => 'App\\Http\\Livewire\\Admin\\Modals\\ShowMessageModal',
   'contact.contact-form' => 'App\\Http\\Livewire\\Contact\\ContactForm',

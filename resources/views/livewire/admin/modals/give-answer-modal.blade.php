@@ -26,7 +26,6 @@
             </div>
             <div class="modal-footer pt-1 pb-1">
             <!-- Submit Button -->
-            <input type="hidden" name="contact_id" id="contact-id" value = "{{ $contact_id }}"> <!-- Contact ID -->
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">{{ __('admin.cancel') }}</button>
             <button type="submit" class="btn btn-primary">Send</button>
             </div>

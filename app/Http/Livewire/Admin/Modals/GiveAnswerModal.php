@@ -10,15 +10,17 @@ use App\Mail\AnswerAsEmail;
 class GiveAnswerModal extends Component
 {
     public $answer;
-    public $contactId;
+    public $contact_id;
+
+    protected $listeners = ['giveAnswerModal'];
 
     protected $rules = [
         'answer' => 'required|min:15',
     ];
 
-    public function __construct(string $contactId)
-    {
-        $this->contactId = $contactId;
+    public function giveAnswerModal(array $data){
+        // get data
+        $this->contact_id = $data["contact_id"];
     }
 
     public function updated($field)
@@ -27,49 +29,13 @@ class GiveAnswerModal extends Component
         $this->validateOnly($field, $this->rules);
     }
 
-    public function updatedContactId()
-    {
-        // Değer güncellendiğinde yapılacak işlemler
-        
-        $this->render();
-    }
-
-
     public function submit(){
-
-            $this->validate($this->rules); // Validate the form
-
-            // Get the contact
-            $contact = Contact::where('id', $this->contact_id)->first();
-
-            // save the contact id and answer in log file
-            $log = fopen("log.txt", "a");
-            fwrite($log, "Contact ID: " . $this->contact_id . "\n");
-            fwrite($log, "Answer: " . $this->answer . "\n");
-            fclose($log);
-
-            // Update the contact
-            $contact->update([
-                'answer' => $this->answer,
-                'answered' => true,
-                'answered_at' => date('Y-m-d H:i:s'),
-                'answerer' => 'Admin' 
-            ]);
-
-            // Get the email of the contact
-            $email = $contact->email;
-
-            // Send answer as email to the user
-            Mail::to($email)->send(new AnswerAsEmail($email, $this->answer, $contact->subject));
-
-            // redirect with success message
-            return redirect()->route('admin')->with('success', __('admin.success_answer_message'));
-
-        /*try{
-            $this->validate($this->rules); // Validate the form
+        try{
+            // Validate the form
+            $this->validate($this->rules); 
 
             // Get the contact
-            $contact = Contact::where($this->contact_id);
+            $contact = Contact::where('id', $this->contact_id);
 
             // Update the contact
             $contact->update([
@@ -78,16 +44,19 @@ class GiveAnswerModal extends Component
                 'answered_at' => date('Y-m-d H:i:s'),
                 'answerer' => 'Admin' // TODO: Change this to the admin's name after admin login is implemented
             ]);
+            
+            // Get Email
+            $email = $contact->select('email')->get()[0]->email;
 
             // Send answer as email to the user
-            Mail::to($contact->email)->send(new AnswerAsMail($contact));
+            Mail::to($email)->send(new AnswerAsEmail($email, $this->answer, $contact->select('subject')->get()[0]->subject));
 
             // redirect with success message
             return redirect()->route('admin')->with('success', __('admin.success_answer_message'));
 
         } catch (\Exception $e) {
             return redirect()->route('admin')->with('error', __('admin.error_answer_message'));
-        }*/
+        }
     }
 
     public function render()

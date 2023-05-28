@@ -7,6 +7,7 @@ use App\Models\Contact;
 
 class AdminPanel extends Component
 {
+    public $show_modal = false;
 
     public function mount()
     {

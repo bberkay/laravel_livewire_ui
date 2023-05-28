@@ -34,11 +34,13 @@ class ContactTable extends Component
     }
 
     public function showMessageModal(string $title, string $content){
-        //
+        // send data to show message modal component
+        $this->emit('showMessageModal', ["title" => $title, "content" => $content]);
     }
 
-    public function giveAnswerModal(string $contact_id){
-        //
+    public function giveAnswerModal(int $contact_id){
+        // show give answer modal
+        $this->emit('giveAnswerModal', ["contact_id" => $contact_id]);
     }
 
     public function render()

@@ -24,6 +24,8 @@
     <livewire:admin.contact-table/>
     
     <!-- Modals -->
+    <livewire:admin.modals.show-message-modal/>
+    <livewire:admin.modals.give-answer-modal/>
 
     <!-- Pagination -->
 </div>

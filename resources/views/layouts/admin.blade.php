@@ -27,8 +27,8 @@
                     <ul class="navbar-nav me-auto">
                         <!-- Profile -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('profile') }}">
-                                Admin Name
+                            <a class="nav-link" href="#">
+                                {{ ucfirst(Auth::user()->username) }}
                             </a>
                         </li>
                     </ul>
@@ -36,11 +36,11 @@
                     <ul class="navbar-nav">
                         <!-- Logout -->
                         <li class = "nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}"
+                            <a class="nav-link" href="{{ route('admin.logout.submit') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 {{ __('navbar.logout') }}
                             </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            <form id="logout-form" action="{{ route('admin.logout.submit') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </li>

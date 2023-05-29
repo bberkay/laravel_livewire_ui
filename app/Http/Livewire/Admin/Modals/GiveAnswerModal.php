@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AnswerAsEmail;
+use Illuminate\Support\Facades\Auth;
 
 class GiveAnswerModal extends Component
 {
@@ -42,7 +43,7 @@ class GiveAnswerModal extends Component
                 'answer' => $this->answer,
                 'answered' => true,
                 'answered_at' => date('Y-m-d H:i:s'),
-                'answerer' => 'Admin' // TODO: Change this to the admin's name after admin login is implemented
+                'answerer' => ucfirst(Auth::user()->username),
             ]);
             
             // Get Email

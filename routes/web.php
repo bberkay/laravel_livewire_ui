@@ -8,7 +8,7 @@ use App\Http\Livewire\Contact\ContactForm;
 use App\Http\Livewire\Profile\ProfileForm;
 use App\Http\Livewire\Profile\ChangePassword;
 use App\Http\Livewire\Admin\AdminLogin;
-use App\Http\Livewire\Admin\AdminPanel;
+use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminController;
 
 /*
@@ -48,7 +48,19 @@ Route::get('/contact-submit', ContactForm::class)->name('contact-submit');
 // TODO: Add middleware to guard admin routes
 
 // Admin login page
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::get('/admin-login', [AdminLoginController::class, 'index'])->name('admin.login');
+
+// Admin login submit
+Route::post('/admin-login', [AdminLoginController::class, 'authenticate'])->name('admin.login.submit');
+
+// Admin Routes
+Route::middleware('auth:admin')->group(function () {   
+    // Admin login page
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+
+    // Admin logout submit
+    Route::post('/admin-logout', [AdminLoginController::class, 'logout'])->name('admin.logout.submit');
+});
 
 
 /****************** Profile ******************/

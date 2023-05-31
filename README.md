@@ -5,9 +5,10 @@
 - Multiple Language and Mail system
 - Register-Login-Logout for users and Login-Logout for admins
 
-#### Info
-- For admin panel, add /admin to url
-- Username: admin, password: admin123123
+#### Admin
+- Add `/admin` to url
+- Username: `admin`
+- Password: `admin123123`
 
 The main goal is learn laravel, livewire and laravel ui technologies with simple project.
 

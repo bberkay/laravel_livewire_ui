@@ -8,7 +8,7 @@
 #### Admin
 - Add `/admin` to url
 - Username: `admin`
-- Password: `admin123123`
+- Password: `admin123`
 
 The main goal is learn laravel, livewire and laravel ui technologies with simple project.
 

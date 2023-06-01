@@ -14,10 +14,10 @@ class ContactSeeder extends Seeder
     public function run(): void
     {
         DB::table('contact')->insert([
-            'name' => "Test42",
-            'subject' => "Test Subject",
-            'email' => "testforprojects42webio@gmail.com",
-            'message' => "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            'name' => "Berkay Kaya",
+            'subject' => "Thank you for viewing the project",
+            'email' => "berkaykayaforbusiness@outlook.com",
+            'message' => "You can contact me at berkaykayaforbusiness@outlook.com",
             'answered' => false,
             'answer' => null,
             'answered_at' => null,

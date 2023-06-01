@@ -12,7 +12,7 @@
                 @foreach($posts as $post)
                 <div class="col-md-6 col-12">
                     <!-- All Posts -->
-                    <x-post.post-card name="Test" title="{{ $post->title }}" description="{{ $post->description }}" type="{{ $post->type }}" author="{{ $post->author }}" card-type="{{ $post->post_type }}" image="{{ asset('storage/'.$post->image) }}" date="{{$post->created_at->format('Y-m-d H:i:s')}}"/>
+                    <x-post.post-card userid="{{ $post->user_id }}" title="{{ $post->title }}" description="{{ $post->description }}" type="{{ $post->type }}" author="{{ $post->author }}" card-type="{{ $post->post_type }}" image="{{ asset('storage/'.$post->image) }}" date="{{$post->created_at->format('Y-m-d H:i:s')}}"/>
                 </div>
                 @endforeach
             </div>

@@ -16,4 +16,4 @@
 ---
 The main goal is learn laravel, livewire and laravel ui technologies with simple project.
 
-[For Demo](https://berkaylaravelapp.000webhostapp.com/?search=)
+[For Demo](https://berkaylaravelapp.000webhostapp.com/?search=) (The site may open slowly because I deployed the project to a free 000webhost account)

@@ -16,4 +16,4 @@
 ---
 The main goal is learn laravel, livewire and laravel ui technologies with simple project.
 
-URL: coming soon.
+URL: https://berkaylaravelapp.000webhostapp.com
